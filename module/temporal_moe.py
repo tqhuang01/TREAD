@@ -81,6 +81,7 @@ class TemporalMoE(nn.Module):
     def forward(self, x):
         """
         x: [B*N, L_y, L_out + te_dim + 1]
+        return: [B*N, L_y, 1]
         """
         # Route each horizon step to its best experts.
         logits = self.router(x)  # [B*N, L_y, num_experts]
